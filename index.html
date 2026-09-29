@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday, my Suggu ♥</title>
+  <meta name="description" content="A dreamy pastel birthday surprise website made with love for Srija (Suggu).">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Background Pastel Canvas (Sparkles, 4-Point Diamonds & Floating Hearts) -->
+  <canvas id="star-canvas"></canvas>
+
+  <!-- Universal Sky & Cloud Atmosphere (renders behind every screen) -->
+  <div class="sky-cloud-layer" aria-hidden="true">
+    <div class="sky-cloud cloud-a"></div>
+    <div class="sky-cloud cloud-b"></div>
+    <div class="sky-cloud cloud-c"></div>
+    <div class="sky-cloud cloud-d"></div>
+    <div class="sky-cloud cloud-e"></div>
+    <span class="rainbow-sparkle" style="top: 14%; left: 30%;">✨</span>
+    <span class="rainbow-sparkle" style="top: 34%; left: 78%; animation-delay: 0.6s;">🌈</span>
+    <span class="rainbow-sparkle" style="top: 68%; left: 12%; animation-delay: 1.2s;">✧</span>
+    <span class="rainbow-sparkle" style="top: 82%; left: 60%; animation-delay: 1.8s;">🚁</span>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TOP LEVEL NAVIGATION BAR (WITH LOCKS)      -->
+  <!-- ========================================== -->
+  <nav class="level-navbar-container" id="level-navbar">
+    <div class="nav-level-item active" data-screen="screen-intro" data-level="0">
+      <span class="nav-icon">✨</span> <span>Gate</span>
+    </div>
+    <div class="nav-level-item locked" data-screen="screen-trivia1" data-level="1">
+      <span class="nav-icon">🔒</span> <span>Level 1: Story</span>
+    </div>
+    <div class="nav-level-item locked" data-screen="screen-trivia2" data-level="2">
+      <span class="nav-icon">🔒</span> <span>Level 2: Know Me</span>
+    </div>
+    <div class="nav-level-item locked" data-screen="screen-ludo" data-level="3">
+      <span class="nav-icon">🔒</span> <span>Level 3: Ludo Star</span>
+    </div>
+    <div class="nav-level-item locked" data-screen="screen-catch" data-level="4">
+      <span class="nav-icon">🔒</span> <span>Level 4: Hearts</span>
+    </div>
+    <div class="nav-level-item locked" data-screen="screen-finale" data-level="5">
+      <span class="nav-icon">🔒</span> <span>Grand Finale</span>
+    </div>
+  </nav>
+
+  <!-- Floating Music Player Controller -->
+  <div id="music-toggle-btn" class="floating-music-widget" title="Toggle Magical Music">
+    <span class="music-icon">🎵</span>
+    <span class="music-title-text">Soundtrack</span>
+    <div class="music-eq">
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+    </div>
+  </div>
+
+  <!-- Main Content Viewport -->
+  <main class="app-container">
+
+    <!-- ========================================== -->
+    <!-- SCREEN 1: DORAEMON ANYWHERE DOOR LOGIN     -->
+    <!-- ========================================== -->
+    <section id="screen-intro" class="app-screen active">
+        <!-- Doraemon floating top-left with bamboo-copter, holding the gift -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" class="doraemon-corner" role="img" aria-label="Doraemon holding a gift">
+          <!-- Doraemon with Gift Box & Bamboo Copter -->
+          <defs>
+            <radialGradient id="doraemonBlue" cx="40%" cy="35%" r="60%">
+              <stop offset="0%" stop-color="#38bdf8"/>
+              <stop offset="60%" stop-color="#0284c7"/>
+              <stop offset="100%" stop-color="#0369a1"/>
+            </radialGradient>
+            <radialGradient id="bellGold" cx="35%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#fef08a"/>
+              <stop offset="70%" stop-color="#eab308"/>
+              <stop offset="100%" stop-color="#ca8a04"/>
+            </radialGradient>
+            <linearGradient id="giftBoxGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f472b6"/>
+              <stop offset="100%" stop-color="#db2777"/>
+            </linearGradient>
+          </defs>
+        
+          <!-- Bamboo-copter (Take-copter) on head -->
+          <g id="take-copter" class="spin-copter">
+            <rect x="96" y="8" width="8" height="18" fill="#eab308" rx="3"/>
+            <ellipse cx="100" cy="8" rx="36" ry="4" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+          </g>
+        
+          <!-- Doraemon Head -->
+          <circle cx="100" cy="80" r="56" fill="url(#doraemonBlue)" stroke="#0f172a" stroke-width="3"/>
+          <!-- White Face Mask -->
+          <ellipse cx="100" cy="88" rx="44" ry="40" fill="#ffffff" stroke="#0f172a" stroke-width="2.5"/>
+        
+          <!-- Eyes -->
+          <ellipse cx="88" cy="58" rx="12" ry="16" fill="#ffffff" stroke="#0f172a" stroke-width="2.5"/>
+          <ellipse cx="112" cy="58" rx="12" ry="16" fill="#ffffff" stroke="#0f172a" stroke-width="2.5"/>
+          <!-- Pupils (Happy looking down at gift) -->
+          <ellipse cx="91" cy="62" rx="4.5" ry="6" fill="#0f172a"/>
+          <circle cx="93" cy="60" r="1.5" fill="#ffffff"/>
+          <ellipse cx="109" cy="62" rx="4.5" ry="6" fill="#0f172a"/>
+          <circle cx="111" cy="60" r="1.5" fill="#ffffff"/>
+        
+          <!-- Red Nose -->
+          <circle cx="100" cy="74" r="8" fill="#ef4444" stroke="#0f172a" stroke-width="2"/>
+          <circle cx="98" cy="72" r="2.5" fill="#ffffff"/>
+          <!-- Nose Line -->
+          <line x1="100" y1="82" x2="100" y2="104" stroke="#0f172a" stroke-width="2.5"/>
+        
+          <!-- Big Happy Mouth -->
+          <path d="M 68 96 Q 100 132 132 96" fill="#dc2626" stroke="#0f172a" stroke-width="2.5"/>
+          <!-- Tongue -->
+          <path d="M 82 108 Q 100 98 118 108 Q 100 128 82 108" fill="#fb7185"/>
+        
+          <!-- Whiskers -->
+          <line x1="62" y1="80" x2="36" y2="76" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="60" y1="88" x2="32" y2="88" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="62" y1="96" x2="36" y2="100" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="138" y1="80" x2="164" y2="76" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="140" y1="88" x2="168" y2="88" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="138" y1="96" x2="164" y2="100" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+        
+          <!-- Red Collar -->
+          <rect x="66" y="126" width="68" height="12" fill="#ef4444" stroke="#0f172a" stroke-width="2.5" rx="5"/>
+          <!-- Bell -->
+          <circle cx="100" cy="140" r="10" fill="url(#bellGold)" stroke="#0f172a" stroke-width="2"/>
+          <line x1="93" y1="137" x2="107" y2="137" stroke="#0f172a" stroke-width="1.5"/>
+          <circle cx="100" cy="142" r="2.5" fill="#0f172a"/>
+          <line x1="100" y1="144.5" x2="100" y2="149" stroke="#0f172a" stroke-width="1.5"/>
+        
+          <!-- Body -->
+          <path d="M 68 136 L 56 195 Q 100 205 144 195 L 132 136 Z" fill="url(#doraemonBlue)" stroke="#0f172a" stroke-width="2.5"/>
+          <!-- White Belly -->
+          <ellipse cx="100" cy="168" rx="28" ry="24" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+        
+          <!-- Feet -->
+          <ellipse cx="78" cy="204" rx="20" ry="12" fill="#ffffff" stroke="#0f172a" stroke-width="2.5"/>
+          <ellipse cx="122" cy="204" rx="20" ry="12" fill="#ffffff" stroke="#0f172a" stroke-width="2.5"/>
+        
+          <!-- Hands Holding Gift Box -->
+          <circle cx="58" cy="164" r="12" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+          <circle cx="142" cy="164" r="12" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+        
+          <!-- Wrapped Birthday Gift Box -->
+          <g id="gift-box">
+            <rect x="74" y="148" width="52" height="42" fill="url(#giftBoxGrad)" stroke="#0f172a" stroke-width="2" rx="4"/>
+            <!-- Yellow Ribbon -->
+            <rect x="96" y="148" width="8" height="42" fill="#fde047" stroke="#ca8a04" stroke-width="1"/>
+            <rect x="74" y="165" width="52" height="8" fill="#fde047" stroke="#ca8a04" stroke-width="1"/>
+            <!-- Ribbon Bow -->
+            <ellipse cx="94" cy="144" rx="7" ry="5" fill="#fde047" stroke="#ca8a04" stroke-width="1"/>
+            <ellipse cx="106" cy="144" rx="7" ry="5" fill="#fde047" stroke="#ca8a04" stroke-width="1"/>
+            <circle cx="100" cy="145" r="3.5" fill="#eab308"/>
+          </g>
+        </svg>
+      <div class="lock-screen-wrapper animate-fade-in">
+
+        
+
+        <div class="lock-kicker">A secret gadget mission for my favorite person</div>
+
+        <h1 class="hero-editorial-title">
+          <span class="title-serif-dark">Happy Birthday,</span><br>
+          <span class="title-serif-pink">my Suggu!</span>
+        </h1>
+
+        <p class="hero-description-text">
+          A magical gadget-filled birthday surprise is waiting on the other side. Use our secret code to open the Anywhere Door.
+        </p>
+
+        <!-- 4D Pocket Gadget Card -->
+        <div class="ribbon-lock-card">
+          <h2 class="card-serif-heading">Birthday Lock</h2>
+          <div class="card-whisker-line">
+            <span class="whiskers"><span></span><span></span><span></span></span>
+            Enter the secret gadget code to unlock your surprise!
+            <span class="whiskers right"><span></span><span></span><span></span></span>
+          </div>
+
+          <div id="password-pill-container" class="pill-input-box">
+            <input 
+              type="password" 
+              id="password-input" 
+              placeholder="Enter password..."
+              autocomplete="off"
+              autofocus
+            >
+          </div>
+          <button id="unlock-password-btn" class="btn-pill-unlock">
+            Open the gadget ★
+          </button>
+
+          <div class="card-bottom-sub">The magic pocket knows the way ✦</div>
+
+          <div id="password-hint-box"></div>
+        </div>
+
+        
+
+      </div>
+        <!-- Shizuka, Gian & Nobita watching the password box -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" class="friends-corner" id="friends-corner" role="img" aria-label="Shizuka, Nobita and Gian watching">
+          <!-- Shizuka, Nobita & Gian peeking in, curious about the password -->
+        
+          <!-- ===================== SHIZUKA ===================== -->
+          <g id="shizuka" class="friend-figure">
+            <!-- Waving arm -->
+            <ellipse cx="46" cy="108" rx="8" ry="20" fill="#fbcfe8" stroke="#0f172a" stroke-width="2" transform="rotate(-35 46 108)"/>
+            <circle cx="36" cy="92" r="8" fill="#ffe4c4" stroke="#0f172a" stroke-width="2"/>
+            <!-- Body / dress -->
+            <path d="M 46 140 Q 40 175 36 205 L 92 205 Q 88 175 82 140 Z" fill="#f472b6" stroke="#0f172a" stroke-width="2.5"/>
+            <!-- Head -->
+            <circle cx="64" cy="118" r="30" fill="#ffe4c4" stroke="#0f172a" stroke-width="2.5"/>
+            <!-- Hair (bob + headband) -->
+            <path d="M 34 118 Q 30 82 64 80 Q 98 82 94 118 Q 94 100 64 98 Q 34 100 34 118 Z" fill="#1f2937" stroke="#0f172a" stroke-width="2"/>
+            <rect x="36" y="92" width="56" height="8" rx="4" fill="#ef4444" stroke="#0f172a" stroke-width="1.5"/>
+            <!-- Face -->
+            <circle cx="54" cy="120" r="3.5" fill="#0f172a"/>
+            <circle cx="74" cy="120" r="3.5" fill="#0f172a"/>
+            <path d="M 58 132 Q 64 137 70 132" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="48" cy="126" r="4" fill="#fda4af" opacity="0.6"/>
+            <circle cx="80" cy="126" r="4" fill="#fda4af" opacity="0.6"/>
+            <!-- Other arm down -->
+            <ellipse cx="86" cy="150" rx="8" ry="20" fill="#fbcfe8" stroke="#0f172a" stroke-width="2"/>
+            <!-- Shoes -->
+            <ellipse cx="48" cy="208" rx="12" ry="7" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+            <ellipse cx="80" cy="208" rx="12" ry="7" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+          </g>
+        
+          <!-- ===================== NOBITA ===================== -->
+          <g id="nobita" class="friend-figure" transform="translate(105 4)">
+            <!-- Body / shirt -->
+            <path d="M 40 138 Q 34 175 30 202 L 90 202 Q 86 175 80 138 Z" fill="#fde047" stroke="#0f172a" stroke-width="2.5"/>
+            <!-- Arms down -->
+            <ellipse cx="30" cy="152" rx="8" ry="20" fill="#fde047" stroke="#0f172a" stroke-width="2"/>
+            <ellipse cx="90" cy="152" rx="8" ry="20" fill="#fde047" stroke="#0f172a" stroke-width="2"/>
+            <circle cx="27" cy="174" r="7" fill="#ffe4c4" stroke="#0f172a" stroke-width="1.8"/>
+            <circle cx="93" cy="174" r="7" fill="#ffe4c4" stroke="#0f172a" stroke-width="1.8"/>
+            <!-- Head -->
+            <circle cx="60" cy="118" r="30" fill="#ffe4c4" stroke="#0f172a" stroke-width="2.5"/>
+            <!-- Hair -->
+            <path d="M 30 112 Q 28 78 60 78 Q 92 78 90 112 Q 78 96 60 98 Q 42 96 30 112 Z" fill="#1f2937" stroke="#0f172a" stroke-width="2"/>
+            <path d="M 56 78 L 52 68" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Round glasses -->
+            <circle cx="49" cy="120" r="11" fill="#ffffff" fill-opacity="0.5" stroke="#0f172a" stroke-width="2.2"/>
+            <circle cx="71" cy="120" r="11" fill="#ffffff" fill-opacity="0.5" stroke="#0f172a" stroke-width="2.2"/>
+            <line x1="60" y1="120" x2="60" y2="120" stroke="#0f172a" stroke-width="2"/>
+            <line x1="60" y1="118" x2="65" y2="116" stroke="#0f172a" stroke-width="2"/>
+            <circle cx="49" cy="120" r="3" fill="#0f172a"/>
+            <circle cx="71" cy="120" r="3" fill="#0f172a"/>
+            <!-- Mouth -->
+            <path d="M 52 136 Q 60 141 68 136" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Shoes -->
+            <ellipse cx="42" cy="205" rx="12" ry="7" fill="#38bdf8" stroke="#0f172a" stroke-width="2"/>
+            <ellipse cx="78" cy="205" rx="12" ry="7" fill="#38bdf8" stroke="#0f172a" stroke-width="2"/>
+          </g>
+        
+          <!-- ===================== GIAN ===================== -->
+          <g id="gian" class="friend-figure" transform="translate(190 -8)">
+            <!-- Waving arm -->
+            <ellipse cx="98" cy="118" rx="9" ry="22" fill="#fb923c" stroke="#0f172a" stroke-width="2" transform="rotate(35 98 118)"/>
+            <circle cx="106" cy="100" r="8" fill="#ffd8ae" stroke="#0f172a" stroke-width="2"/>
+            <!-- Body / striped shirt -->
+            <path d="M 32 150 Q 26 186 22 214 L 96 214 Q 92 186 86 150 Z" fill="#fb923c" stroke="#0f172a" stroke-width="2.5"/>
+            <path d="M 24 172 L 90 172" stroke="#ffffff" stroke-width="6"/>
+            <path d="M 22 194 L 94 194" stroke="#ffffff" stroke-width="6"/>
+            <!-- Other arm down -->
+            <ellipse cx="24" cy="164" rx="9" ry="22" fill="#fb923c" stroke="#0f172a" stroke-width="2"/>
+            <!-- Head (bigger, sturdy) -->
+            <circle cx="59" cy="126" r="34" fill="#ffd8ae" stroke="#0f172a" stroke-width="2.5"/>
+            <!-- Buzzcut hair -->
+            <path d="M 28 122 Q 26 90 59 88 Q 92 90 90 122 Q 78 106 59 108 Q 40 106 28 122 Z" fill="#1f2937" stroke="#0f172a" stroke-width="2"/>
+            <!-- Face -->
+            <circle cx="48" cy="130" r="3.5" fill="#0f172a"/>
+            <circle cx="70" cy="130" r="3.5" fill="#0f172a"/>
+            <path d="M 42 96 L 34 90" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 76 96 L 84 90" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 46 146 Q 59 156 72 146" stroke="#0f172a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Shoes -->
+            <ellipse cx="38" cy="217" rx="13" ry="7" fill="#0284c7" stroke="#0f172a" stroke-width="2"/>
+            <ellipse cx="80" cy="217" rx="13" ry="7" fill="#0284c7" stroke="#0f172a" stroke-width="2"/>
+          </g>
+        </svg>
+    </section>
+
+    <!-- 3D Anywhere Door Transition Overlay -->
+    <div class="anywhere-door-overlay" id="anywhere-door-overlay" aria-hidden="true">
+      <div class="door-frame">
+        <div class="door-light-rays"></div>
+        <div class="door-outer">
+          <div class="door-panel">
+            <div class="door-knob"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SCREEN 2: LEVEL 1 TRIVIA (OUR STORY)       -->
+    <!-- ========================================== -->
+    <section id="screen-trivia1" class="app-screen hidden">
+      <div class="glass-panel animate-fade-in">
+        <div class="scrapbook-header">
+          <span class="washi-tape">Level 1 • Memory Bread</span>
+        </div>
+        <h1 class="editorial-screen-title">Memory Bread (Anki-pan) 🍞✨</h1>
+        <p class="editorial-screen-sub">Haaa to pyaree gochuu lal — dikhau zara kitna yaad hai sab kuch... No options baby!</p>
+
+        <div class="attempts-hearts-container" id="trivia1-hearts">
+          <span>🔔</span><span>🔔</span><span>🔔</span>
+        </div>
+
+        <div id="trivia1-q-count" style="font-size: 0.85rem; font-weight: 700; color: #8e7d9b; text-transform: uppercase; letter-spacing: 1px;">
+          Question 1 of 3
+        </div>
+        <div class="toast-slice">
+          <h2 id="trivia1-question-text" class="editorial-screen-sub" style="font-size: 1.3rem; color: #271a35; font-weight: 700; margin: 0;">
+            Question goes here...
+          </h2>
+        </div>
+
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="trivia1-input" 
+            class="glow-input" 
+            placeholder="Type your answer here..."
+            autocomplete="off"
+          >
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button id="trivia1-submit-btn" class="btn-primary">
+            <span>Lock Answer</span> 🔒
+          </button>
+          <button id="trivia1-reveal-btn" class="btn-secondary hidden" style="display: none;">
+            <span>Show Answer (Nirash Card) 🥺</span>
+          </button>
+        </div>
+
+        <div id="trivia1-feedback"></div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SCREEN 3: LEVEL 2 TRIVIA (HOW WELL YOU KNOW)-->
+    <!-- ========================================== -->
+    <section id="screen-trivia2" class="app-screen hidden">
+      <div class="glass-panel animate-fade-in">
+        <div class="scrapbook-header">
+          <span class="washi-tape">Level 2 • Doremon shabit Wali Test</span>
+        </div>
+        <h1 class="editorial-screen-title">Doremon Banane Wali Test 😼</h1>
+        <p class="editorial-screen-sub">huuhhhhhhh bari aayi doremon bnne wali av shabit kar!</p>
+
+        <div class="attempts-hearts-container" id="trivia2-hearts">
+          <span>🔔</span><span>🔔</span><span>🔔</span>
+        </div>
+
+        <div id="trivia2-q-count" style="font-size: 0.85rem; font-weight: 700; color: #8e7d9b; text-transform: uppercase; letter-spacing: 1px;">
+          Question 1 of 3
+        </div>
+        <h2 id="trivia2-question-text" class="editorial-screen-sub" style="font-size: 1.35rem; color: #271a35; font-weight: 700; margin: 15px 0 25px;">
+          Question goes here...
+        </h2>
+
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="trivia2-input" 
+            class="glow-input" 
+            placeholder="Type your answer here..."
+            autocomplete="off"
+          >
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button id="trivia2-submit-btn" class="btn-primary">
+            <span>Lock Answer</span> 🔒
+          </button>
+          <button id="trivia2-reveal-btn" class="btn-secondary hidden" style="display: none;">
+            <span>Show Answer (Nirash Card) 🥺</span>
+          </button>
+        </div>
+
+        <div id="trivia2-feedback"></div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SCREEN 4: LEVEL 3 HIGH-ENERGY MINI LUDO    -->
+    <!-- ========================================== -->
+    <section id="screen-ludo" class="app-screen hidden">
+      <div class="glass-panel animate-fade-in" style="max-width: 680px;">
+        <div class="scrapbook-header">
+          <span class="washi-tape">Level 3 • Championship</span>
+        </div>
+        <h1 class="editorial-screen-title">Mini Ludo Star Championship 🎲</h1>
+        <p class="editorial-screen-sub">Suggu 👑 vs Bhondu Bot 🤖. Land on 🚀 Rockets & 🥟 Momos to zoom home!</p>
+
+        <div class="ludo-championship-arena">
+          <!-- Live Token Speech Reaction Bubbles -->
+          <div class="ludo-speech-container">
+            <div id="suggu-speech-bubble" class="speech-bubble hidden"></div>
+            <div id="bot-speech-bubble" class="speech-bubble hidden" style="border-color: #38bdf8; color: #0284c7;"></div>
+          </div>
+
+          <!-- Scoreboard -->
+          <div class="ludo-scoreboard">
+            <div id="ludo-player-badge" class="ludo-player-card active">
+              <span>👑 Suggu's Anywhere Door Palace</span>
+            </div>
+            <div id="ludo-bot-badge" class="ludo-player-card">
+              <span>🤖 Bhondu Bot's Gadget Base</span>
+            </div>
+          </div>
+
+          <!-- Authentic 16-Step Track with Powerups -->
+          <div id="ludo-track-cells" class="ludo-track"></div>
+
+          <!-- Dice & Controls -->
+          <div class="ludo-controls">
+            <div id="ludo-dice-face" class="dice-face">🎲</div>
+            <button id="ludo-roll-btn" class="btn-primary">
+              <span>Roll The Dice!</span> 🎲
+            </button>
+            <div id="ludo-status-text" style="font-weight: 700; color: #645570; min-height: 26px;">
+              Chalo Suggu baby, tumhari baari! Roll karke harado isko! 🎲
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SCREEN 5: LEVEL 4 CATCH THE HEARTS ARCADE  -->
+    <!-- ========================================== -->
+    <section id="screen-catch" class="app-screen hidden">
+      <div class="glass-panel animate-fade-in">
+        <div class="scrapbook-header">
+          <span class="washi-tape">Level 4 • Love Arcade</span>
+        </div>
+        <h1 class="editorial-screen-title">Catch My Heart, Suggu! 💖</h1>
+        <p class="editorial-screen-sub">Drag basket with finger or mouse to collect hearts, stars & tulips!</p>
+
+        <div class="catch-game-container">
+          <div class="meter-wrapper" style="width: 100%; max-width: 480px; margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 6px; color: #ec4899;">
+              <span id="hearts-meter-text">Love Meter: 0%</span>
+              <span>Target: 100% ✨</span>
+            </div>
+            <div style="height: 14px; background: #ffe4e6; border-radius: 10px; overflow: hidden; border: 1px solid #fecdd3;">
+              <div id="hearts-meter-fill" style="height: 100%; width: 0%; background: linear-gradient(90deg, #f43f5e, #ec4899, #fde047); transition: width 0.3s ease;"></div>
+            </div>
+          </div>
+
+          <canvas id="catch-canvas"></canvas>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SCREEN 6: GRAND FINALE (VIDEO + 3D GIFT)   -->
+    <!-- ========================================== -->
+    <section id="screen-finale" class="app-screen hidden">
+      <div class="glass-panel animate-fade-in" style="max-width: 820px;">
+        <div class="scrapbook-header">
+          <span class="washi-tape" style="background: #fef08a; color: #854d0e; border-color: #f59e0b;">✨ The Grand Finale ✨</span>
+        </div>
+        <h1 class="editorial-screen-title">Happy Birthday, My Suggu! 🎂❤️</h1>
+        <p class="editorial-screen-sub">
+          From the first text ever to the this ongoing ultiamte gandfad torfor wali laraii, you are my favorite blessing. Watch your birthday video below:
+        </p>
+
+        <!-- Video Player Frame -->
+        <div class="video-frame-container">
+          <video id="birthday-video-player" controls playsinline poster="assets/video_poster.svg">
+            <source src="assets/birthday_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <!-- 3D Interactive Gift Box Unbox -->
+        <div class="gift-box-stage">
+          <h2 style="font-family: var(--font-serif); font-size: 1.5rem; color: #be185d; margin-bottom: 12px;">
+            Tap Doraemon's Magic Bell to Unwrap Your Present! 🔔
+          </h2>
+          <div id="gift-box-3d" class="gift-box-wrapper" title="Click to unwrap!">
+            <div class="gift-box-cube">🔔</div>
+          </div>
+
+          <!-- Revealed Scratch Card Stage -->
+          <div id="gift-revealed-stage" class="hidden" style="display: none;">
+            <h2 style="font-family: var(--font-serif); font-size: 1.7rem; color: #ec4899; margin-bottom: 8px;">
+              ✨ A Special Surprise Gift For You! ✨
+            </h2>
+            <p style="color: #645570; font-size: 0.95rem; margin-bottom: 16px;">
+              Rub or scratch the golden card below with your finger or mouse!
+            </p>
+
+            <div class="scratch-card-box">
+              <div class="scratch-hidden-content">
+                <span style="font-size: 1.6rem;">👑💖🎁</span>
+                <div style="background: #fef08a; color: #1e1b4b; font-family: monospace; font-weight: 800; font-size: 1.1rem; padding: 6px 14px; border-radius: 8px; margin: 8px 0; letter-spacing: 2px;">
+                  Chal na bara aayi gift lene wali gal dkhe h apne kitne pyaree hai
+                </div>
+                <p style="font-size: 0.95rem; font-weight: 700; color: #271a35; margin-top: 6px;">
+                 Chal Chal av gall mt fula  gift badd me deta hu
+                </p>
+                <small style="color: #645570; font-size: 0.8rem; margin-top: 4px;">
+                   🤫
+                </small>
+              </div>
+              <canvas id="scratch-canvas" class="scratch-canvas-overlay"></canvas>
+            </div>
+
+            <div style="margin-top: 28px; padding: 22px; background: #fff1f2; border-radius: 20px; border: 1px solid #fecdd3;">
+              <h3 style="font-family: var(--font-serif); color: #be185d; font-size: 1.35rem; margin-bottom: 8px;">
+                "Nirash nahi kia tune apne bachhe ko... ab hamesha ke liye pack ho jaa yarr mere sath!" ❤️
+              </h3>
+              <p style="font-size: 1.05rem; color: var(--color-pink); font-weight: 700;">
+                Forever Yours, <br>
+                Teraa Boobyboy ✨
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- LOCKED LEVEL WARNING POPUP MODAL           -->
+  <!-- ========================================== -->
+  <div id="lock-warning-modal" class="modal-overlay hidden" style="display: none;">
+    <div class="lock-warning-modal-box animate-pop">
+      <div class="warning-emoji">😜✋</div>
+      <h2 class="warning-heading">Arreee gochuu ! Pehle games to khel le babby, fir kudio aage! 😂❤️(sb jgh ye kudne ki v teri adaat na uffffff)</h2>
+      <p class="warning-subtext">Level complete karo pehle cutie, shortcuts are not allowed for my Bhondu! 😉✨</p>
+      <button id="lock-warning-close-btn" class="btn-primary">
+        <span>Theek hai baba, khelungi!</span> 💖
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TYPEWRITER HANDWRITTEN LOVE LETTER MODAL   -->
+  <!-- ========================================== -->
+  <div id="letter-modal" class="modal-overlay hidden" style="display: none;">
+    <div class="parchment-letter animate-pop">
+      <span id="letter-modal-badge" class="washi-tape" style="margin-bottom: 12px;">Token #1 Unlocked</span>
+      <h2 id="letter-modal-title" class="letter-title">Letter Title</h2>
+      <div id="letter-modal-content" class="letter-body"></div>
+      
+      <div style="text-align: center;">
+        <button id="letter-next-btn" class="btn-primary">
+          <span>Agge Badh mere chotee boobo wali babyyyy</span> 💖
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/ludo.js"></script>
+  <script src="js/catch-hearts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
