@@ -195,7 +195,7 @@ baki along this whole journey mai kab tere chakkar me par gaya pata v nai chala 
     subtitle: "Watch this video note, and then unwrap your birthday surprise!",
     video: {
       src: "assets/birthday_video.mp4", // Put your video file here or paste a YouTube ID below
-      youtubeId: "" // Optional YouTube ID e.g. "dQw4w9WgXcQ"
+      youtubeId: "https://www.youtube.com/watch?v=rOxiRBljT0s" // Optional YouTube ID e.g. "dQw4w9WgXcQ"
     },
     gift: {
       boxHeading: "Tap the Gift Box to Unwrap! 🎁",
